@@ -1,0 +1,20 @@
+[
+  {
+    "offer_id": 1,
+	"offerer_id" : 1,
+	"asker_id" : 2,
+    "last_message" : "Hey there"
+  },
+  {
+    "offer_id": 2,
+	"offerer_id" : 2,
+	"asker_id" : 1,
+    "last_message" : "Anybody there?"
+  },
+    {
+    "offer_id": 3,
+	"offerer_id" : 3,
+	"asker_id" : 4,
+    "last_message" : "Yeah sup?"
+  }
+]

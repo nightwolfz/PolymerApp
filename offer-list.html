@@ -1,0 +1,65 @@
+﻿<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/paper-item/paper-item.html">
+
+<polymer-element name="offer-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    post-card {
+      margin-bottom: 30px;
+    }
+	.offer_card {
+        width: 95%;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+		margin-bottom: 4px;
+      }
+	  .core_item_distance {
+		font-size: 0.9em;
+		color: #0A7E07;
+	  }
+    </style>
+	
+	<core-ajax id="ajax" auto url="../offers.json" on-core-response="{{offersLoaded}}" handleAs="json">
+    </core-ajax>
+    
+    <div layout vertical center>
+      <template repeat="{{offer in offers}}">
+	  
+		<div id="core_card{{offer.uid}}" class="offer_card" vertical layout animate slide-down on-click="{{offerClicked}}">
+		
+			<paper-item  label="" layout horizontal justified center>
+				<core-item label="{{ offer.content }}" horizontal layout one flex></core-item>
+				<core-item label="{{ offer.distance }} km " class="core_item_distance" horizontal layout></core-item>
+				<core-icon icon="chevron-right" id="core_icon" class="black"></core-icon>
+				<paper-ripple fit></paper-ripple>
+			</paper-item>
+		</div>
+
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    offerClicked: function(event, detail, sender) {
+      var offer = sender.templateInstance.model.offer;
+	  console.log(offer);
+      //this.$.service.setFavorite(offer.uid, offer.favorite);
+    },
+	offersLoaded: function() {
+      // Make a copy of the loaded data
+      this.offers = this.$.ajax.response.slice(0);
+    }
+  });
+  </script>
+</polymer-element>

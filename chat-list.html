@@ -1,0 +1,57 @@
+﻿<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/paper-item/paper-item.html">
+
+<polymer-element name="chat-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    post-card {
+      margin-bottom: 30px;
+    }
+	.core_item_distance {
+		font-size: 0.9em;
+		color: #0A7E07;
+	}
+	
+	  .chat_list_card {
+        background: #fff;
+		padding: 5px;
+        opacity: 0.8;
+        margin: 5px;
+        width: 100%;
+      }
+    </style>
+	
+	<core-ajax id="ajax" auto url="../chats.json" on-core-response="{{chatsLoaded}}" handleAs="json">
+    </core-ajax>
+    
+    <div layout vertical center>
+      <template repeat="{{chat in chats}}">
+	  
+		<paper-item class="chat_list_card" label="" layout horizontal justified center on-click="{{offerClicked}}">
+			<core-item label="{{ chat.last_message }}"></core-item>
+			<paper-ripple fit></paper-ripple>
+		</paper-item>
+		
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    chatClicked: function(event, detail, sender) {
+      var chat = sender.templateInstance.model.chat;
+	  console.log(chat);
+      //this.$.service.setFavorite(chat.uid, chat.favorite);
+    },
+	chatsLoaded: function() {
+      // Make a copy of the loaded data
+      this.chats = this.$.ajax.response.slice(0);
+    }
+  });
+  </script>
+</polymer-element>

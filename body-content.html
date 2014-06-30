@@ -1,0 +1,162 @@
+﻿<polymer-element name="body-content" noscript>
+  <template>
+	  <style>
+	  html,body {
+		height: 100%;
+		margin: 0;
+		background-color: #E5E5E5;
+		font-family: 'RobotoDraft', sans-serif;
+	  }
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        top: 0px;
+        left: 0px;
+      }
+      #section {
+        width: 420px;
+        height: 630px;
+        left: 580px;
+        top: 40px;
+        position: absolute;
+      }
+      #paper_tabs {
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+        background-color: rgb(63, 81, 181);
+      }
+      #core_animated_pages {
+        width: 420px;
+        height: 582px;
+        overflow: hidden;
+        background-color: rgb(238, 238, 238);
+      }
+      #core_icon {
+        height: 24px;
+        width: 24px;
+      }
+      #core_icon_menu {
+        height: 24px;
+        width: 24px;
+        fill: rgb(255, 255, 255);
+      }
+      #core_icon_chat {
+        height: 24px;
+        width: 24px;
+        fill: rgb(255, 255, 255);
+      }
+      #core_item_distance {
+        color: rgb(10, 126, 7);
+        opacity: 0.9;
+      }
+      #core_card {
+        height: 15%;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        padding: 20px;
+        width: 80%;
+        background-color: rgb(255, 255, 255);
+      }
+      #core_field {
+        left: 1610px;
+        top: 610px;
+      }
+      #section_main paper-button {
+        font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+        background: rgb(239, 239, 255);
+      }
+      #paper_button {
+        fill: rgb(255, 255, 255);
+        background-color: rgb(66, 127, 237);
+      }
+      #paper_button1 {
+        fill: rgb(255, 255, 255);
+        background-color: rgb(66, 127, 237);
+      }
+      #core_card1 {
+        width: 95%;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.098) 0px 2px 4px, rgba(0, 0, 0, 0.098) 0px 0px 3px;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+      }
+      .button {
+        color: rgb(255, 255, 255);
+        padding-right: 10px;
+      }
+      .black {
+        color: rgb(0, 0, 0);
+        fill: rgb(0, 0, 0);
+      }
+      #section_chat {
+        padding: 10px;
+      }
+      #paper_toast {
+        left: 1740px;
+        top: 730px;
+      }
+      #core_menu {
+        font-size: 16px;
+        left: 1690px;
+        top: 590px;
+      }
+      #section1 {
+        left: 1580px;
+        top: 560px;
+      }
+      .whiteBg {
+        background: rgb(255, 255, 255);
+      }
+      #core_card_chat1 {
+        padding: 5px;
+        opacity: 0.8;
+        margin: 5px;
+        width: 80%;
+      }
+  </style>
+  
+        <section id="section" layout vertical>
+      <paper-tabs nobar selected="{{ currentPage }}" selectedindex="2" id="paper_tabs">
+        <paper-tab id="paper_tab_menu">
+          <core-icon icon="menu" id="core_icon_menu" active></core-icon>
+        </paper-tab>
+        <paper-tab id="paper_tab_main" four flex>Mendler</paper-tab>
+        <paper-tab id="paper_tab_chat" active>
+          <core-icon icon="cloud-queue" id="core_icon_chat" active></core-icon>
+        </paper-tab>
+      </paper-tabs>
+      <section id="section_wrapper" flex relative>
+        <core-animated-pages transitions="slide-up slide-down fade" selected="{{ $.paper_tabs.selected }}" selectedindex="2" notap id="core_animated_pages">
+          <section id="section_menu" layout vertical center center-justified>
+            <core-card id="core_card" vertical center center-justified animate fade slide-down layout>
+              <div id="div">Find offers from people nearby in your area.</div>
+              <p id="p"> </p>
+              <paper-button label="Find Something" icon="search" id="paper_button" on-click="{{ gotoPage }}" class="button" gotopage="1"></paper-button>
+            </core-card>
+            <p id="p1"> </p>
+            <core-card id="core_card" layout vertical center center-justified slide-down animate fade>
+              <div id="div1">If you have something to offer, let people know.</div>
+              <p id="p2"> </p>
+              <paper-button label="Offer Something" icon="add" id="paper_button1" class="button"></paper-button>
+            </core-card>
+          </section>
+          <section id="section_main" layout vertical center>
+			<offer-list show="all"></offer-list>
+          </section>
+          <section id="section_chat" vertical layout active>
+			<chat-list show="all"></chat-list>
+          </section>
+        </core-animated-pages>
+      </section>
+    </section>
+  </template>
+</polymer-element>

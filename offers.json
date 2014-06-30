@@ -1,0 +1,23 @@
+[
+  {
+    "uid": 1,
+    "content" : "50 DVDs for the prize of 20!",
+    "username" : "Anonymous",
+    "avatar" : "../images/avatar-01.svg",
+    "distance": 1.5
+  },
+  {
+    "uid": 2,
+    "content" : "Anybody need crap? (free)",
+    "username" : "Anonymous",
+    "avatar" : "../images/avatar-02.svg",
+    "distance": 2.3
+  },
+    {
+    "uid": 3,
+    "content" : "Seeking trees",
+    "username" : "Anonymous",
+    "avatar" : "../images/avatar-03.svg",
+    "distance": 2.9
+  }
+]
